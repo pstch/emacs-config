@@ -34,8 +34,7 @@
 (require 'elpy)
 
 (elpy-enable)
-(elpy-clean-modeline)
-(setq elpy-rpc-backend "rope")
+(setq elpy-rpc-backend "jedi")
 
 (add-hook 'python-mode-hook (lambda ()
                               (define-key python-mode-map (kbd "RET") 'newline-and-indent)))

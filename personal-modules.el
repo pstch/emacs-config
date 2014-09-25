@@ -1,6 +1,6 @@
-;;; custom.el --- Emacs.d: Customizations file.
+;;; personal-modules.el --- Emacs.d.
 ;;
-;; Author: Sliim <sliim@mailoo.org>
+;; Author: pstch <pstch@pstch.net>
 ;; Version: 1.0.0
 ;; Keywords: emacs.d
 
@@ -8,7 +8,7 @@
 
 ;;; Commentary:
 
-;; Customizations file
+;; Emacs.d modules to use (personal)
 
 ;;; License:
 
@@ -29,22 +29,14 @@
 
 ;;; Code:
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(safe-local-variable-values (quote ((web-mode-engine . django)))))
+;; General personal settings
+(require 'personal-settings)
 
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+;; Generic modules
+(require 'emacsd-pycov2-module)
 
-(custom-theme-set-faces
- 'moe-dark
- `(default ((t (:height 85 :width normal)))))
+;; Personal module settings
+(require 'mu4e-settings)
 
-;;; custom.el ends here
+(provide 'personal-modules)
+;;; personal-modules.el ends here

@@ -33,6 +33,8 @@
 
 (defvar emacsd-dir (file-name-directory load-file-name)
   "The root dir of Emacs.")
+(defvar emacsd-personal-modules-dir (expand-file-name "personal-modules" emacsd-dir)
+  "Personal modules root directory.")
 (defvar emacsd-modules-dir (expand-file-name "modules" emacsd-dir)
   "Modules root directory.")
 (defvar emacsd-core-dir (expand-file-name "core" emacsd-dir)
@@ -72,6 +74,7 @@
 (add-to-list 'custom-theme-load-path emacsd-themes-dir)
 (add-to-list 'load-path emacsd-core-dir)
 (add-to-list 'load-path emacsd-modules-dir)
+(add-to-list 'load-path emacsd-personal-modules-dir)
 (add-to-list 'load-path emacsd-elisp-dir)
 (add-to-list 'load-path emacsd-vendor-dir)
 (emacsd-add-subfolders-to-load-path emacsd-elpa-dir)
@@ -82,6 +85,9 @@
 
 ;; Load modules
 (load (expand-file-name "modules.el" emacsd-dir))
+
+;; Load personal config if exists
+(load (expand-file-name "personal-modules.el" emacsd-dir))
 
 ;; Load private config if exists
 (let ((user-config-file "~/.emacsrc"))

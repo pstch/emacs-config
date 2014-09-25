@@ -1,2 +1,6 @@
 /.cask/
 /snapshots/
+/auto-save-list/
+/semanticdb/
+tramp
+ac-comphist.dat

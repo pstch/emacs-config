@@ -1,14 +1,15 @@
-;;; custom.el --- Emacs.d: Customizations file.
+;;; emacsd-pycov2-module.el --- Emacs.d modules.
 ;;
-;; Author: Sliim <sliim@mailoo.org>
+;; Author: pstch <pistache@pstch.net>
 ;; Version: 1.0.0
-;; Keywords: emacs.d
+;; Keywords: emacs.d modules
 
 ;; This file is not part of GNU Emacs.
 
 ;;; Commentary:
 
-;; Customizations file
+;; pycov2 module
+;; Enable inline Python coverage using pycov2
 
 ;;; License:
 
@@ -29,22 +30,17 @@
 
 ;;; Code:
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(safe-local-variable-values (quote ((web-mode-engine . django)))))
+(provide 'emacsd-pycov2-module)
 
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+(load-file (expand-file-name "pycov2.el" emacsd-personal-modules-dir))
 
-(custom-theme-set-faces
- 'moe-dark
- `(default ((t (:height 85 :width normal)))))
+(setq pycov2-cov2emacs-cmd "/home/pistache/code/envs/dev/bin/cov2emacs")
 
-;;; custom.el ends here
+(add-hook 'python-mode-hook
+(function (lambda ()
+(local-set-key (kbd "C-o c") 'pycov2-refresh)
+(pycov2-mode)
+(linum-mode)
+())))
+
+;;; emacsd-pycov2-module.el ends here
