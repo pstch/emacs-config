@@ -1,6 +1,8 @@
-/.cask/
+/.cask
 /snapshots/
 /auto-save-list/
 /semanticdb/
+/.mc-lists.el
+/ac-comphist.dat
+
 tramp
-ac-comphist.dat

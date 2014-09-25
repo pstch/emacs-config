@@ -65,6 +65,7 @@
 (depends-on "helm-pydoc")
 (depends-on "auto-complete")
 (depends-on "iedit")
+(depends-on "multiple-cursors")
 (depends-on "markdown-mode")
 (depends-on "puppet-mode")
 (depends-on "ack-and-a-half")
@@ -95,7 +96,6 @@
 (depends-on "emamux")
 
 (depends-on "powerline")
-(depends-on "emms")
 (depends-on "popwin")
 (depends-on "direx")
 (depends-on "quickrun")

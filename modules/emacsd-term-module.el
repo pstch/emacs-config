@@ -1,4 +1,4 @@
-;;; emacsd-emms-module.el --- Emacs.d modules.
+;;; emacsd-term-module.el --- Emacs.d modules.
 ;;
 ;; Author: Sliim <sliim@mailoo.org>
 ;; Version: 1.0.0
@@ -8,7 +8,9 @@
 
 ;;; Commentary:
 
-;; Personal Emacs.d Emms module
+;; This module is based from Hugo Heden's dump:
+;; http://hugoheden.wordpress.com/2009/03/08/copypaste-with-emacs-in-terminal/
+;; For the time being this is just a copy/paste from his blog..
 
 ;;; License:
 
@@ -29,27 +31,19 @@
 
 ;;; Code:
 
-(require 'emms-setup)
-(require 'emms-streams)
-(require 'emms-info)
-(require 'emms-info-mp3info)
-(require 'emms-browser)
+(unless window-system
+  (when (getenv "DISPLAY")
+    (setq x-select-enable-clipboard nil)
+    (defun xsel-cut-function (text &optional push)
+      (with-temp-buffer
+        (insert text)
+        (call-process-region (point-min) (point-max) "xsel" nil 0 nil "--clipboard" "--input")))
+    (defun xsel-paste-function()
+      (let ((xsel-output (shell-command-to-string "xsel --clipboard --output")))
+        (unless (string= (car kill-ring) xsel-output)
+          xsel-output )))
+    (setq interprogram-cut-function 'xsel-cut-function)
+    (setq interprogram-paste-function 'xsel-paste-function)))
 
-(defvar emacsd-emms-dir (expand-file-name "emms" emacsd-var-dir)
-  "Directory for emms cache, history, etc.. files.")
-
-(emms-standard)
-(emms-default-players)
-
-(setq emms-source-file-default-directory "~/musics/")
-(setq emms-score-file (expand-file-name "scores" emacsd-emms-dir))
-(setq emms-stream-bookmarks-file (expand-file-name "streams" emacsd-emms-dir))
-(setq emms-history-file (expand-file-name "history" emacsd-emms-dir))
-(setq emms-cache-file (expand-file-name "cache" emacsd-emms-dir))
-
-(add-to-list 'emms-info-functions 'emms-info-mp3info)
-
-
-(provide 'emacsd-emms-module)
-
-;;; emacsd-emms-module.el ends here
+(provide 'emacsd-term-module)
+;;; emacsd-term-module.el ends here

@@ -33,10 +33,10 @@
 (require 'emacsd-prog-module)
 (require 'emacsd-pyenv-module)
 (require 'emacsd-python-module)
+(require 'emacsd-ruby-module)
 (require 'emacsd-php-module)
 (require 'emacsd-ac-module)
 (require 'emacsd-direx-module)
-(require 'emacsd-emms-module)
 (require 'emacsd-eshell-module)
 (require 'emacsd-git-messenger-module)
 (require 'emacsd-javascript-module)
@@ -47,5 +47,6 @@
 (require 'emacsd-reveal-module)
 (require 'emacsd-helm-module)
 (require 'emacsd-notify-module)
+(require 'emacsd-term-module)
 
 ;;; modules.el ends here

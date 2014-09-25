@@ -29,28 +29,16 @@
 
 ;;; Code:
 
-(defun emacsd-json-pretty-format ()
-  "Print json string into an human readable format.
-This function run external shell command `python -m json.tool` on current region."
-  (interactive)
-  (shell-command-on-region (region-beginning) (region-end) "python -m json.tool"))
-
-(defun emacsd-nxml-pretty-format()
-  "Pretty print XML format. Requires xmllint in your path."
-  (interactive)
-  (save-excursion
-    (shell-command-on-region (region-beginning) (region-end) "xmllint --format -" (buffer-name) t)
-    (nxml-mode)
-    (indent-region begin end)))
-
 (require 'package)
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/") t)
-(setq package-user-dir emacsd-elpa-dir)
-(package-initialize)
+(defun emacsd-init-packages()
+  "Initialize packages directory."
+  (add-to-list 'package-archives
+               '("melpa" . "http://melpa.milkbox.net/packages/") t)
+  (setq package-user-dir emacsd-elpa-dir)
+  (package-initialize))
 
 (require 'guru-mode)
-(add-hook 'prog-mode-hook 'turn-on-guru-mode)
+(add-hook 'prog-mode-hook 'guru-mode)
 
 ;;Global configuration
 (tool-bar-mode -1)
