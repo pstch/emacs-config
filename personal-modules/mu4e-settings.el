@@ -29,6 +29,7 @@
 (setq mml2015-use 'epg)
 
 ;; maildirs extension
+(require 'mu4e-maildirs-extension)
 (mu4e-maildirs-extension)
 (setq mu4e-maildir-shortcuts
       '(("/default/INBOX"         . ?i)
