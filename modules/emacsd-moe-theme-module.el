@@ -1,14 +1,14 @@
-;;; modules.el --- Emacs.d.
+;;; emacsd-moe-theme-module.el --- Emacs.d modules.
 ;;
 ;; Author: Sliim <sliim@mailoo.org>
 ;; Version: 1.0.0
-;; Keywords: emacs.d
+;; Keywords: emacs.d modules
 
 ;; This file is not part of GNU Emacs.
 
 ;;; Commentary:
 
-;; Emacs.d modules to use
+;; Personal Emacs.d Auto-complete module
 
 ;;; License:
 
@@ -29,26 +29,14 @@
 
 ;;; Code:
 
-(require 'emacsd-prelude-module)
-(require 'emacsd-prog-module)
-(require 'emacsd-pyenv-module)
-(require 'emacsd-python-module)
-(require 'emacsd-ruby-module)
-(require 'emacsd-php-module)
-(require 'emacsd-ac-module)
-(require 'emacsd-direx-module)
-(require 'emacsd-eshell-module)
-(require 'emacsd-git-messenger-module)
-(require 'emacsd-javascript-module)
-(require 'emacsd-markdown-module)
-(require 'emacsd-popwin-module)
-(require 'emacsd-powerline-module)
-(require 'emacsd-skbd-module)
-(require 'emacsd-reveal-module)
-(require 'emacsd-helm-module)
-(require 'emacsd-notify-module)
+(require 'moe-theme)
+(moe-dark)
+(moe-theme-set-color 'blue)
 
-(require 'emacsd-moe-theme-module)
-(require 'emacsd-term-module)
+(custom-theme-set-faces
+ 'moe-dark
+ `(default ((t ( :foreground "#F6F3E8" :height 85 :width normal)))))
 
-;;; modules.el ends here
+(provide 'emacsd-moe-theme-module)
+
+;;; emacsd-moe-theme-module.el ends here

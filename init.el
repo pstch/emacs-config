@@ -61,23 +61,14 @@
 (unless (file-exists-p savefile-dir)
   (make-directory savefile-dir))
 
-(defun emacsd-add-subfolders-to-load-path (parent-dir)
-  "Add all level PARENT-DIR subdirs to the `load-path'."
-  (dolist (f (directory-files parent-dir))
-    (let ((name (expand-file-name f parent-dir)))
-      (when (and (file-directory-p name)
-                 (not (equal f ".."))
-                 (not (equal f ".")))
-        (add-to-list 'load-path name)
-        (emacsd-add-subfolders-to-load-path name)))))
-
 (add-to-list 'custom-theme-load-path emacsd-themes-dir)
 (add-to-list 'load-path emacsd-core-dir)
 (add-to-list 'load-path emacsd-modules-dir)
 (add-to-list 'load-path emacsd-personal-modules-dir)
 (add-to-list 'load-path emacsd-elisp-dir)
 (add-to-list 'load-path emacsd-vendor-dir)
-(emacsd-add-subfolders-to-load-path emacsd-elpa-dir)
+(let ((default-directory emacsd-elpa-dir))
+  (normal-top-level-add-subdirs-to-load-path))
 
 ;; Use core libraries
 (require 'emacsd-core)
@@ -93,9 +84,5 @@
 (let ((user-config-file "~/.emacsrc"))
   (when (file-exists-p user-config-file)
     (load-file user-config-file)))
-
-;; Load theme
-(require 'moe-theme)
-(moe-dark)
 
 ;;; init.el ends here

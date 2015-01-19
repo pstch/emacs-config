@@ -19,7 +19,7 @@ git clone https://github.com/Sliim/emacs.d ~/.emacs.d
 #+END_SRC
 
 *** With Cask
-You can use *Cask* to install package dependencies (installation instructions [[http://cask.github.io/installation/][here]])
+You can use *Cask* to install package dependencies (installation instructions [[http://cask.readthedocs.org/en/latest/guide/installation.html][here]])
 
 #+BEGIN_SRC shell
 cd ~/.emacs.d
@@ -94,7 +94,7 @@ Start emacs!
 | ~C-o i~    | ~iedit-mode~                           |
 | ~C-o k~    | ~emacsd-set-cmd-to-kbd~                |
 | ~C-o s~    | ~eshell~                               |
-| ~C-o t~    | ~proced~                               |
+| ~C-o P~    | ~proced~                               |
 | ~C-o w~    | ~whitespace-mode~                      |
 
 **** helm
@@ -163,6 +163,11 @@ Start emacs!
 | ~C-o m a~  | ~mc/mark-all-like-this~       |
 | ~C-o m n~  | ~mc/mark-next-lines~          |
 | ~C-o m p~  | ~mc/mark-previous-lines~      |
+
+**** ruby
+| Keybinding | Command     |
+| ~C-o r i~  | ~yari-helm~ |
+
 
 *** Skbd module
 | Keybinding  | Command               |
